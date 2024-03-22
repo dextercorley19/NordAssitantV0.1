@@ -7,15 +7,20 @@ import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import AddDocDialog from "@/components/AddDocDialog";
+import AddDocDialog from "@/components/AddEditDocDialog";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
+import { dark } from "@clerk/themes";
+import { useTheme } from "next-themes";
 
 export default function NavBar() {
-  const [showAddDocDialog, setShowAddDocDialog] = useState(false);
+  const { theme } = useTheme();
+
+  const [showAddEditDocDialog, setShowAddEditDocDialog] = useState(false);
 
   return (
     <>
       <div className="p-4 shadow">
-        <div className="flex flex-wrap gap-3 items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <Link href="/" className="flex items-center">
             <Image
               src={logo}
@@ -28,17 +33,22 @@ export default function NavBar() {
             <UserButton
               afterSignOutUrl="/"
               appearance={{
+                baseTheme: theme === "dark" ? dark : undefined,
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
-            <Button onClick={() => setShowAddDocDialog(true)}>
+            <ThemeToggleButton />
+            <Button onClick={() => setShowAddEditDocDialog(true)}>
               <Plus size={20} className="mr-2" />
               Add Document
             </Button>
           </div>
         </div>
       </div>
-      <AddDocDialog open={showAddDocDialog} setOpen={setShowAddDocDialog} />
+      <AddDocDialog
+        open={showAddEditDocDialog}
+        setOpen={setShowAddEditDocDialog}
+      />
     </>
   );
 }
