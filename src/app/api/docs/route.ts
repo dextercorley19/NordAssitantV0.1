@@ -1,5 +1,11 @@
+import { docsIndex } from "@/lib/db/pinecone";
 import prisma from "@/lib/db/prisma";
-import { createDocSchema, updateDocSchema, deleteDocSchema } from "@/lib/validation/doc";
+import { getEmbedding } from "@/lib/openai";
+import {
+  createDocSchema,
+  updateDocSchema,
+  deleteDocSchema,
+} from "@/lib/validation/doc";
 import { auth } from "@clerk/nextjs";
 
 export async function POST(req: Request) {
@@ -21,12 +27,26 @@ export async function POST(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const doc = await prisma.docs.create({
-      data: {
-        title,
-        content,
-        userId,
-      },
+    const embedding = await getEmbeddingForDoc(title, content);
+
+    const doc = await prisma.$transaction(async (tx) => {
+      const doc = await tx.docs.create({
+        data: {
+          title,
+          content,
+          userId,
+        },
+      });
+
+      await docsIndex.upsert([
+        {
+          id: doc.id,
+          values: embedding,
+          metadata: { userId },
+        },
+      ]);
+
+      return doc;
     });
 
     return Response.json({ doc }, { status: 201 });
@@ -61,12 +81,26 @@ export async function PUT(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const updatedDoc = await prisma.docs.update({
-      where: { id },
-      data: {
-        title,
-        content,
-      },
+    const embedding = await getEmbeddingForDoc(title, content);
+
+    const updatedDoc = await prisma.$transaction(async (tx) => {
+      const updatedDoc = await tx.docs.update({
+        where: { id },
+        data: {
+          title,
+          content,
+        },
+      });
+
+      await docsIndex.upsert([
+        {
+          id,
+          values: embedding,
+          metadata: { userId },
+        },
+      ]);
+
+      return updatedDoc;
     });
 
     return Response.json({ updatedDoc }, { status: 200 });
@@ -101,11 +135,18 @@ export async function DELETE(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await prisma.docs.delete({ where: { id } });
+    await prisma.$transaction(async (tx) => {
+      await tx.docs.delete({ where: { id } });
+      await docsIndex.deleteOne(id);
+    });
 
     return Response.json({ message: "Doc deleted" }, { status: 200 });
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
+}
+
+async function getEmbeddingForDoc(title: string, content: string | undefined) {
+  return getEmbedding(title + "\n\n" + content ?? "");
 }
