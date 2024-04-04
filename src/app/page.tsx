@@ -3,7 +3,13 @@ import logo from "../app/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import GlobalNavBar from "./landingpage/globalnavbar";
-import Descriptions from "./landingpage/descriptions";
+import Descriptions1 from "./landingpage/descriptions";
+import mechanic from "../app/assets/mechanic.jpeg";
+import inventory from "../app/assets/inventory_pic.jpeg";
+import cruising from "../app/assets/cruising.jpeg";
+import person1 from "../app/assets/person1.svg";
+import person2 from "../app/assets/person 2.svg";
+import person3 from "../app/assets/person3.svg";
 
 export default function Home() {
   return (
@@ -30,7 +36,7 @@ export default function Home() {
                 alt="Nord Assistant Logo"
                 width={100}
                 height={100}
-                className="inline-block mb-8"
+                className="mb-8 inline-block"
               />
 
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -68,9 +74,89 @@ export default function Home() {
             />
           </div>
         </div>
-        <Descriptions />
+        <Descriptions1 />
+        <div className="mx-auto my-40 flex max-w-5xl justify-between">
+          <div className="inline-flex h-80 w-96  flex-col items-start justify-center gap-6">
+            <div className="self-stretch font-['Inter'] text-4xl font-semibold leading-10 text-black">
+              Maintenance Management System
+            </div>
+            <div className="self-stretch font-['Inter'] text-xl font-normal leading-9 text-zinc-500">
+              Use Nord to organize and simplify your maintenance logs, routines,
+              and schedules. Add your mechanic to have everything in one place.
+            </div>
+            <Button>
+              <Link href="">Learn more</Link>
+            </Button>
+          </div>
+          <div>
+            <Image src={mechanic} alt="boat helm" width={516} height={330} />
+          </div>
+        </div>
+        <div className="mx-auto my-40 flex max-w-5xl justify-between">
+          <div>
+            <Image src={inventory} alt="boat helm" width={516} height={330} />
+          </div>
+          <div className="inline-flex h-80 w-96  flex-col items-start justify-center gap-6">
+            <div className="self-stretch font-['Inter'] text-4xl font-semibold leading-10 text-black">
+              Inventory Management System{" "}
+            </div>
+            <div className="self-stretch font-['Inter'] text-xl font-normal leading-9 text-zinc-500">
+              Intuitive inventory management system that allows you to keep
+              track of all your parts and supplies.
+            </div>
+            <Button>
+              <Link href="">Learn more</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="mx-auto my-40 flex max-w-5xl justify-between">
+          <div className="inline-flex h-80 w-96  flex-col items-start justify-center gap-6">
+            <div className="self-stretch font-['Inter'] text-4xl font-semibold leading-10 text-black">
+              Crew Collaboration
+            </div>
+            <div className="self-stretch font-['Inter'] text-xl font-normal leading-9 text-zinc-500">
+              Spend less time training crew and more time enjoying your
+              adventures.
+            </div>
+            <Button>
+              <Link href="">Learn more</Link>
+            </Button>
+          </div>
+          <div>
+            <Image src={cruising} alt="boat helm" width={516} height={330} />
+          </div>
+        </div>
       </div>
-      
+      <div className="mx-auto flex max-w-5xl">
+        <div className="inline-flex h-40 w-96  flex-col items-start justify-center gap-6">
+          <div className="self-stretch font-['Inter'] text-4xl font-semibold leading-10 text-black">
+            Testimonials
+          </div>
+          <div className="self-stretch font-['Inter'] text-xl font-normal leading-9 text-zinc-500">
+            What some of our users think
+          </div>
+          <div className="inline-flex h-56 w-96 flex-col items-start justify-start gap-12 rounded-xl border border-neutral-100 bg-white p-8 shadow">
+            <div className="self-stretch font-['Inter'] text-xl font-medium leading-loose text-black">
+              “Simplified our charter business.”
+            </div>
+            <div className="inline-flex items-center justify-start gap-4">
+              <Image
+                className="h-11 w-11 rounded-full"
+                src={person1}
+                alt="person1"
+              />
+              <div className="inline-flex flex-col items-start justify-start gap-0.5">
+                <div className="font-['Inter'] text-base font-medium leading-normal text-black">
+                  Martha
+                </div>
+                <div className="font-['Inter'] text-base font-medium leading-normal text-zinc-500">
+                  Charter Captain
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

@@ -24,7 +24,7 @@ export default function GlobalNavBar() {
   return (
     <>
       <div className="p-4 shadow">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
           <Link href="/" className="flex items-center">
             <Image
               src={logo}
@@ -75,6 +75,15 @@ export default function GlobalNavBar() {
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
+                  <Link href="" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Docs
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
@@ -89,7 +98,6 @@ export default function GlobalNavBar() {
               <UserButton
                 afterSignOutUrl="/"
                 appearance={{
-                  baseTheme: theme === "dark" ? dark : undefined,
                   elements: {
                     avatarBox: { width: "2.5rem", height: "2.5rem" },
                   },
