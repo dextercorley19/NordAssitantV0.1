@@ -2,10 +2,13 @@ import Image from "next/image";
 import logo from "../app/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import GlobalNavBar from "./landingpage/globalnavbar";
+import Descriptions from "./landingpage/descriptions";
 
 export default function Home() {
   return (
     <main>
+      <GlobalNavBar />
       <div className="bg-white">
         <div className="relative isolate px-6 pt-14 lg:px-8">
           <div
@@ -65,7 +68,9 @@ export default function Home() {
             />
           </div>
         </div>
+        <Descriptions />
       </div>
+      
     </main>
   );
 }
