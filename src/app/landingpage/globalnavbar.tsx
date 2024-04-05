@@ -39,7 +39,7 @@ export default function GlobalNavBar() {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>About</NavigationMenuTrigger>
-                  <NavigationMenuContent className="block w-max flex-grow p-1.5">
+                  <NavigationMenuContent className="col-span-full p-1.5">
                     <Link href="" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
