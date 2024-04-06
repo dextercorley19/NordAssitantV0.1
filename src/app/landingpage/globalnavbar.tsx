@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/logo.svg";
 import { UserButton } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
-import { useTheme } from "next-themes";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,15 +12,12 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
-export default function GlobalNavBar() {
-  const { theme } = useTheme();
-
+const GlobalNavBar = () => {
   return (
-    <>
+    <div>
       <div className="p-4 shadow">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
           <Link href="/" className="flex items-center">
@@ -40,7 +35,7 @@ export default function GlobalNavBar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>About</NavigationMenuTrigger>
                   <NavigationMenuContent className="col-span-full p-1.5">
-                    <Link href="" legacyBehavior passHref>
+                    <Link href="">
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
                       >
@@ -48,7 +43,7 @@ export default function GlobalNavBar() {
                       </NavigationMenuLink>
                     </Link>
 
-                    <Link href="" legacyBehavior passHref>
+                    <Link href="">
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
                       >
@@ -56,7 +51,7 @@ export default function GlobalNavBar() {
                       </NavigationMenuLink>
                     </Link>
 
-                    <Link href="" legacyBehavior passHref>
+                    <Link href="">
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
                       >
@@ -66,7 +61,7 @@ export default function GlobalNavBar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="" legacyBehavior passHref>
+                  <Link href="/Blog">
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
@@ -75,7 +70,7 @@ export default function GlobalNavBar() {
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="" legacyBehavior passHref>
+                  <Link href="">
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
@@ -94,19 +89,20 @@ export default function GlobalNavBar() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            <div>
-              <UserButton
-                afterSignOutUrl="/"
-                appearance={{
-                  elements: {
-                    avatarBox: { width: "2.5rem", height: "2.5rem" },
-                  },
-                }}
-              />
-            </div>
+
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: { width: "2.5rem", height: "2.5rem" },
+                },
+              }}
+            />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default GlobalNavBar;
