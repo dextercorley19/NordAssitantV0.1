@@ -6,16 +6,7 @@ import Image from "next/image";
 const Testimonials = () => {
   return (
     <div>
-      <div className="mx-auto mt-12 flex max-w-5xl">
-        {/* <div className="inline-flex h-36 w-96  flex-col items-start gap-6">
-          <div className="self-stretch font-['Inter'] text-4xl font-semibold leading-10 text-black">
-            Testimonials
-          </div>
-          <div className="self-stretch font-['Inter'] text-xl font-normal leading-9 text-zinc-500">
-            What some of our users think:
-          </div>
-        </div> */}
-      </div>
+      <div className="mx-auto mt-12 flex max-w-5xl"></div>
       <div className="mx-auto max-w-5xl flex-wrap items-center justify-evenly gap-6">
         <div className="h-50 mb-4  inline-flex w-80 flex-col items-start justify-start gap-12 rounded-xl border border-neutral-100 bg-white p-8 shadow">
           <div className="self-stretch font-['Inter'] text-xl font-medium leading-loose text-black">

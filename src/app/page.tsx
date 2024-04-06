@@ -5,10 +5,8 @@ import Footer from "./landingpage/footer";
 import Pricing from "./landingpage/pricing";
 import Testimonials from "./landingpage/testimonials";
 import Hero from "./landingpage/hero";
-import { auth } from "@clerk/nextjs";
 
 export default function Home() {
-  const { userId } = auth();
 
 
   return (

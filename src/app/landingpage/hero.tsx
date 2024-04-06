@@ -39,12 +39,12 @@ const Hero = () => {
             <Button asChild>
               <Link href="/docs">Get Started</Link>
             </Button>
-            <a
+            <Link
               href="#"
               className="text-sm font-semibold leading-6 text-gray-900"
             >
               Learn more <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
