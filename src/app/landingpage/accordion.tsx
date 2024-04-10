@@ -9,7 +9,7 @@ export function AccordionComponent() {
   return (
     <div className="mx-auto my-32 max-w-5xl">
       <div>
-        <h1 className="text-3xl font-semibold">FAQ's</h1>
+        <h1 className="text-3xl font-semibold">FAQ&apos;s</h1>
       </div>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">

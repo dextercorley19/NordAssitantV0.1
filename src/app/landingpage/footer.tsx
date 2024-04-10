@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import Link from "next/link";
 
-export function Footer() {
+export default function Footer() {
   return (
     <div className="mx-auto mb-4 max-w-5xl">
       <div className="mb-4 h-px w-2/5 border border-neutral-200"></div>

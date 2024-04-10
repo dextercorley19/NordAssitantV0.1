@@ -57,7 +57,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-export function GlobalNavBar() {
+export default function GlobalNavBar() {
   return (
     <div
       className="bg-white p-4 shadow"
