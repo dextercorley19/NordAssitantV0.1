@@ -6,7 +6,7 @@ import mechanic from "../assets/mechanic.jpeg";
 import inventory from "../assets/inventory_pic.jpeg";
 import cruising from "../assets/cruising.jpeg";
 
-const Descriptions = () => {
+export function Descriptions() {
   return (
     <div>
       <div className="mx-auto my-40 flex max-w-5xl justify-between">
@@ -22,7 +22,7 @@ const Descriptions = () => {
             your vessel. Adding more information is as easy as uploading a file.
           </div>
           <Button>
-            <Link href="">
+            <Link href="/">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -38,7 +38,7 @@ const Descriptions = () => {
             and schedules. Add your mechanic to have everything in one place.
           </div>
           <Button>
-            <Link href="">
+            <Link href="/">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -60,7 +60,7 @@ const Descriptions = () => {
             of all your parts and supplies.
           </div>
           <Button>
-            <Link href="">
+            <Link href="/">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -76,7 +76,7 @@ const Descriptions = () => {
             adventures.
           </div>
           <Button>
-            <Link href="">
+            <Link href="/">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -87,6 +87,4 @@ const Descriptions = () => {
       </div>
     </div>
   );
-};
-
-export default Descriptions;
+}

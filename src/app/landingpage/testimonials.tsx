@@ -3,7 +3,7 @@ import person2 from "../assets/person 2.svg";
 import person3 from "../assets/person3.svg";
 import Image from "next/image";
 
-const Testimonials = () => {
+export function Testimonials() {
   return (
     <div>
       <div className="mx-auto mt-12 flex max-w-5xl"></div>
@@ -71,6 +71,4 @@ const Testimonials = () => {
       </div>
     </div>
   );
-};
-
-export default Testimonials;
+}

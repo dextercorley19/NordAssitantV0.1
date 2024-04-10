@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import Link from "next/link";
 
-const Footer = () => {
+export function Footer() {
   return (
     <div className="mx-auto mb-4 max-w-5xl">
       <div className="mb-4 h-px w-2/5 border border-neutral-200"></div>
@@ -36,17 +36,16 @@ const Footer = () => {
           <div className="flex items-start gap-8">
             <div className="flex flex-col  gap-3">
               <div className="text-base font-medium leading-normal text-black">
-                {" "}
                 About
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Founding Team</Link>
+                <Link href="/">Founding Team</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Mission</Link>
+                <Link href="/">Mission</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Contact Us</Link>
+                <Link href="/">Contact Us</Link>
               </div>
             </div>
             <div className="flex flex-col gap-3">
@@ -55,25 +54,27 @@ const Footer = () => {
                 Docs
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Setup</Link>
+                <Link href="/">Setup</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Inventory</Link>
+                <Link href="/">Inventory</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Maintenance</Link>
+                <Link href="/">Maintenance</Link>
               </div>
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-base font-medium leading-normal text-black">
-                {" "}
                 Privacy
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Privacy Policy</Link>
+                <Link href="/">Privacy Policy</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="">Terms of Serice</Link>
+                <Link href="/">Terms of Serice</Link>
+              </div>
+              <div className="font-regular text-sm leading-normal text-zinc-700">
+                <Link href="/">Cookie Policy</Link>
               </div>
             </div>
           </div>
@@ -81,6 +82,4 @@ const Footer = () => {
       </div>
     </div>
   );
-};
-
-export default Footer;
+}

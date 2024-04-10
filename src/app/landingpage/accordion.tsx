@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const AccordionComponent = () => {
+export function AccordionComponent() {
   return (
     <div className="mx-auto my-32 max-w-5xl">
       <div>
@@ -47,6 +47,4 @@ const AccordionComponent = () => {
       </Accordion>
     </div>
   );
-};
-
-export default AccordionComponent;
+}

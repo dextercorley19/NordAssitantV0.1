@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dot } from "lucide-react";
 import Link from "next/link";
 
-const Pricing = () => {
+export function Pricing() {
   return (
     <div className="mt-40 flex items-center bg-gradient-to-r from-[#ee9fe4] to-[#9089fc]">
       <div className="mx-auto my-12 max-w-5xl flex-wrap items-center justify-evenly gap-6">
@@ -44,7 +44,7 @@ const Pricing = () => {
           </ul>
           <div className="inline-flex items-center justify-center gap-2 self-stretch">
             <Button>
-              <Link href="">Enroll</Link>
+              <Link href="/">Enroll for free</Link>
             </Button>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Pricing = () => {
           </ul>
           <div className="inline-flex items-center justify-center gap-2 self-stretch">
             <Button>
-              <Link href="">Enroll</Link>
+              <Link href="/">Enroll for free</Link>
             </Button>
           </div>
         </div>
@@ -129,13 +129,11 @@ const Pricing = () => {
           </ul>
           <div className="inline-flex items-center justify-center gap-2 self-stretch">
             <Button>
-              <Link href="">Enroll</Link>
+              <Link href="/">Enroll for free</Link>
             </Button>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default Pricing;
+}
