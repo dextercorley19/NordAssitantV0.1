@@ -21,7 +21,7 @@ export default function Home() {
         <GlobalNavBar />
         <Hero />
         <Descriptions />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Pricing />
         <AccordionComponent />
         <Footer />

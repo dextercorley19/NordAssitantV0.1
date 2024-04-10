@@ -7,7 +7,7 @@ import {
 
 export function AccordionComponent() {
   return (
-    <div className="mx-auto my-32 max-w-5xl">
+    <div className="mx-auto px-8 my-32 max-w-5xl">
       <div>
         <h1 className="text-3xl font-semibold">FAQ&apos;s</h1>
       </div>

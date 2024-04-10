@@ -1,8 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { LayersIcon } from "@radix-ui/react-icons";
-
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,49 +17,65 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { PencilLine } from "lucide-react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
+    title: "Nord Chat",
     href: "/",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Setup Nord with every piece of written information to your vessel.",
   },
   {
-    title: "Hover Card",
+    title: "Maintenance Logs",
     href: "/",
     description:
-      "For sighted users to preview content available behind a link.",
+      "From davot crane interworkings to fuel transfers, Nord can help. Add your mechanic to always be on the same page, and never miss an oil change again.",
   },
   {
-    title: "Progress",
+    title: "Inventory Management",
     href: "/",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
-  {
-    title: "Scroll-area",
-    href: "/",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
+  // {
+  //   title: "Scroll-area",
+  //   href: "/",
+  //   description: "Visually or semantically separates content.",
+  // },
+  // {
+  //   title: "Tabs",
+  //   href: "/",
+  //   description:
+  //     "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+  // },
+  // {
+  //   title: "Tooltip",
+  //   href: "/",
+  //   description:
+  //     "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  // },
 ];
 
 export default function GlobalNavBar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if page is scrolled more than 0 pixels
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    // Listen for scroll events on the window
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []); // The empty array ensures this effect runs only once on mount
+
   return (
     <div
-      className="bg-white p-4 shadow"
+      className={`bg-transparent p-8 ${isScrolled ? "bg-white" : ""}`}
       style={{ position: "fixed", top: 0, width: "100%", zIndex: 1000 }}
     >
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
@@ -72,47 +87,50 @@ export default function GlobalNavBar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent">
+                  About
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-white to-purple-200 p-6 no-underline shadow outline-none focus:shadow-md "
+                          href="/blog"
                         >
-                          <LayersIcon className="h-6 w-6" />
+                          <PencilLine className="h-6 w-6" />
                           <div className="mb-2 mt-4 text-lg font-medium">
-                            shadcn/ui
+                            Blog
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components that you can copy
-                            and paste into your apps. Accessible. Customizable.
-                            Open Source.
+                            Read about some of the best adventures our users
+                            embark on, and how they use Nord Assistant.
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/docs" title="Introduction">
-                      Re-usable components built using Radix UI and Tailwind
-                      CSS.
+                    <ListItem href="/docs" title="Founding Team">
+                      Meet the founding team behind Nord Assistant.
                     </ListItem>
-                    <ListItem href="/docs/installation" title="Installation">
-                      How to install dependencies and structure your app.
+                    <ListItem href="/docs/installation" title="Mission">
+                      What we hope to accomplish.
                     </ListItem>
                     <ListItem
                       href="/docs/primitives/typography"
-                      title="Typography"
+                      title="Contact Us"
                     >
-                      Styles for headings, paragraphs, lists...etc
+                      Reach out to our team to schedule a demo or ask a
+                      question.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent">
+                  Docs
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  <ul className="grid w-[200px] gap-3 p-4 md:w-[250px] md:grid-cols-1 lg:w-[300px] ">
                     {components.map((component) => (
                       <ListItem
                         key={component.title}
@@ -127,8 +145,10 @@ export default function GlobalNavBar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/docs" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Documentation
+                  <NavigationMenuLink
+                    className={`${navigationMenuTriggerStyle()} bg-transparent`}
+                  >
+                    Dashboard
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -145,158 +165,6 @@ export default function GlobalNavBar() {
         </div>
       </div>
     </div>
-
-    // <div
-    //   className="bg-white p-4 shadow"
-    //   style={{ position: "fixed", top: 0, width: "100%", zIndex: 1000 }}
-    // >
-    //   <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
-    //     <Link href="/" className="flex items-center">
-    //       <Image src={logo} alt="Nord Assistant Logo" width={30} height={30} />
-    //       <p className="px-2 text-lg font-medium">Nord Assistant</p>
-    //     </Link>
-    //     <div className="flex items-center gap-2">
-    //       <NavigationMenu>
-    //         <NavigationMenuList>
-    //           <NavigationMenuItem>
-    //             <NavigationMenuTrigger>About</NavigationMenuTrigger>
-    //             <NavigationMenuContent className="col-span-full p-1.5">
-    //               <Link href="/">
-    //                 <NavigationMenuLink
-    //                   className={navigationMenuTriggerStyle()}
-    //                 >
-    //                   Founding Team
-    //                 </NavigationMenuLink>
-    //               </Link>
-
-    //               <Link href="/">
-    //                 <NavigationMenuLink
-    //                   className={navigationMenuTriggerStyle()}
-    //                 >
-    //                   Mission
-    //                 </NavigationMenuLink>
-    //               </Link>
-
-    //               <Link href="/">
-    //                 <NavigationMenuLink
-    //                   className={navigationMenuTriggerStyle()}
-    //                 >
-    //                   Contact us
-    //                 </NavigationMenuLink>
-    //               </Link>
-    //             </NavigationMenuContent>
-    //           </NavigationMenuItem>
-    //           <NavigationMenuItem>
-    //             <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
-    //             <NavigationMenuContent className="col-span-full p-1.5">
-    //               <div className="inline-flex h-80 w-96 flex-col items-start justify-start gap-2.5 rounded-md border border-slate-200 bg-white p-6 shadow">
-    //                 <div className="inline-flex items-start justify-start gap-3">
-    //                   <Link href="/">
-    //                     <NavigationMenuLink
-    //                       className={navigationMenuTriggerStyle()}
-
-    //                     >
-    //                      <div className="relative h-64 w-48">
-    //                       <div className="absolute left-0 top-0 h-64 w-48 rounded bg-gradient-to-b from-rose-500 via-fuchsia-800 to-indigo-700" />
-    //                       <div className="absolute left-[24px] top-[100px] inline-flex flex-col items-start justify-start gap-5">
-    //                         <div className="h-5 w-5 rounded-full bg-white" />
-    //                         <div className="flex flex-col items-start justify-start gap-2">
-    //                           <div className="font-['Inter'] text-lg font-medium leading-normal text-white">
-    //                             shadcn/ui
-    //                           </div>
-    //                           <div className="w-36 font-['Inter'] text-sm font-normal leading-none text-slate-200">
-    //                             Beautifully designed components built with Radix
-    //                             UI and Tailwind CSS.
-    //                           </div>
-    //                         </div>
-    //                       </div>
-    //                       </div>
-    //                     </NavigationMenuLink>
-    //                   </Link>
-
-    //                   <div className="inline-flex flex-col items-start justify-start gap-3">
-    //                     <Link href="/">
-    //                       <NavigationMenuLink
-    //                         className={navigationMenuTriggerStyle()}
-    //                       >
-    //                         <div className="flex flex-col items-start justify-start gap-2.5 rounded-md bg-white p-3">
-    //                           <div className="flex flex-col items-start justify-start gap-1">
-    //                             <div className="font-['Inter'] text-sm font-medium leading-none text-black">
-    //                               Introduction
-    //                             </div>
-    //                             <div className="w-56 font-['Inter'] text-sm font-normal leading-tight text-slate-500">
-    //                               Re-usable components built using Radix UI and
-    //                               Tailwind CSS
-    //                             </div>
-    //                           </div>
-    //                         </div>
-    //                       </NavigationMenuLink>
-    //                     </Link>
-    //                     <Link href="/">
-    //                       <NavigationMenuLink
-    //                         className={navigationMenuTriggerStyle()}
-    //                       >
-    //                         <div className="flex flex-col items-start justify-start gap-2.5 rounded-md bg-white p-3">
-    //                           <div className="flex flex-col items-start justify-start gap-1">
-    //                             <div className="font-['Inter'] text-sm font-medium leading-none text-black">
-    //                               Installation
-    //                             </div>
-    //                             <div className="w-56 font-['Inter'] text-sm font-normal leading-tight text-slate-500">
-    //                               How to install dependencies and structure your
-    //                               app.
-    //                             </div>
-    //                           </div>
-    //                         </div>
-    //                       </NavigationMenuLink>
-    //                     </Link>
-    //                     <Link href="/">
-    //                       <NavigationMenuLink
-    //                         className={navigationMenuTriggerStyle()}
-    //                       >
-    //                         <div className="flex flex-col items-start justify-start gap-2.5 rounded-md bg-white p-3">
-    //                           <div className="flex flex-col items-start justify-start gap-1">
-    //                             <div className="font-['Inter'] text-sm font-medium leading-none text-black">
-    //                               Typography
-    //                             </div>
-    //                             <div className="w-56 font-['Inter'] text-sm font-normal leading-tight text-slate-500">
-    //                               Styles for headings, paragraphs, lists...etc
-    //                             </div>
-    //                           </div>
-    //                         </div>
-    //                       </NavigationMenuLink>
-    //                     </Link>
-    //                   </div>
-    //                 </div>
-    //               </div>
-    //             </NavigationMenuContent>
-    //           </NavigationMenuItem>
-    //           <NavigationMenuItem>
-    //             <Link href="/">
-    //               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-    //                 Docs
-    //               </NavigationMenuLink>
-    //             </Link>
-    //           </NavigationMenuItem>
-    //           <NavigationMenuItem>
-    //             <Link href="/docs" legacyBehavior passHref>
-    //               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-    //                 Dashboard
-    //               </NavigationMenuLink>
-    //             </Link>
-    //           </NavigationMenuItem>
-    //         </NavigationMenuList>
-    //       </NavigationMenu>
-    //       <UserButton
-    //         afterSignOutUrl="/"
-    //         appearance={{
-    //           elements: {
-    //             avatarBox: { width: "2.5rem", height: "2.5rem" },
-    //           },
-    //         }}
-    //       />{" "}
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
 const ListItem = React.forwardRef<
@@ -324,54 +192,3 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
-// <div className="inline-flex h-80 w-96 flex-col items-start justify-start gap-2.5 rounded-md border border-slate-200 bg-white p-6 shadow">
-//   <div className="inline-flex items-start justify-start gap-3">
-//     <div className="relative h-64 w-48">
-//       <div className="absolute left-0 top-0 h-64 w-48 rounded bg-gradient-to-b from-rose-500 via-fuchsia-800 to-indigo-700" />
-//       <div className="absolute left-[24px] top-[100px] inline-flex flex-col items-start justify-start gap-5">
-//         <div className="h-5 w-5 rounded-full bg-white" />
-//         <div className="flex flex-col items-start justify-start gap-2">
-//           <div className="font-['Inter'] text-lg font-medium leading-normal text-white">
-//             shadcn/ui
-//           </div>
-//           <div className="w-36 font-['Inter'] text-sm font-normal leading-none text-slate-200">
-//             Beautifully designed components built with Radix UI and Tailwind
-//             CSS.
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//     <div className="inline-flex flex-col items-start justify-start gap-3">
-//       <div className="flex flex-col items-start justify-start gap-2.5 rounded-md bg-white p-3">
-//         <div className="flex flex-col items-start justify-start gap-1">
-//           <div className="font-['Inter'] text-sm font-medium leading-none text-black">
-//             Introduction
-//           </div>
-//           <div className="w-56 font-['Inter'] text-sm font-normal leading-tight text-slate-500">
-//             Re-usable components built using Radix UI and Tailwind CSS
-//           </div>
-//         </div>
-//       </div>
-//       <div className="flex flex-col items-start justify-start gap-2.5 rounded-md bg-white p-3">
-//         <div className="flex flex-col items-start justify-start gap-1">
-//           <div className="font-['Inter'] text-sm font-medium leading-none text-black">
-//             Installation
-//           </div>
-//           <div className="w-56 font-['Inter'] text-sm font-normal leading-tight text-slate-500">
-//             How to install dependencies and structure your app.
-//           </div>
-//         </div>
-//       </div>
-//       <div className="flex flex-col items-start justify-start gap-2.5 rounded-md bg-white p-3">
-//         <div className="flex flex-col items-start justify-start gap-1">
-//           <div className="font-['Inter'] text-sm font-medium leading-none text-black">
-//             Typography
-//           </div>
-//           <div className="w-56 font-['Inter'] text-sm font-normal leading-tight text-slate-500">
-//             Styles for headings, paragraphs, lists...etc
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// </div>;
