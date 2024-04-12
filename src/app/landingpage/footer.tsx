@@ -68,7 +68,7 @@ export default function Footer() {
                 Privacy
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="/">Privacy Policy</Link>
+                <Link href="/privacypolicy">Privacy Policy</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
                 <Link href="/">Terms of Serice</Link>
