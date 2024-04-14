@@ -16,6 +16,11 @@ export default function Home() {
           name="description"
           content="Meet Nord, you ai powered first mate."
         />
+        <link
+          rel="icon"
+          href="/icon.svg"
+          type="image/svg+xml"
+        />
       </Head>
       <main>
         <GlobalNavBar />

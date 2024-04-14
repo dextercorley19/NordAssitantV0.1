@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 307.16 385.32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-6);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="268.23" y1="13.11" x2="265.23" y2="365.11" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9c95c0"/>
+      <stop offset=".43" stop-color="#6c7097"/>
+      <stop offset=".8" stop-color="#49557a"/>
+      <stop offset="1" stop-color="#3c4b6f"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="180.98" y1="17.37" x2="177.98" y2="369.37" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="94.26" y1="14.63" x2="91.26" y2="366.63" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="147.94" y1="15.09" x2="144.94" y2="367.09" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="178.11" y1="15.34" x2="175.11" y2="367.34" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-6" x1="65.28" y1="14.38" x2="62.28" y2="366.38" xlink:href="#linear-gradient"/>
+  </defs>
+  <polygon class="cls-6" points="293.66 10.32 240.33 70.32 240.33 190.32 293.66 246.64 293.66 10.32"/>
+  <polygon class="cls-1" points="293.66 255.32 65.44 15.32 65.44 115.32 293.66 355.32 293.66 255.32"/>
+  <polygon class="cls-5" points="65.44 116.08 119.49 173.32 119.49 333.32 65.44 333.32 65.44 116.08"/>
+  <polygon class="cls-2" points="125.35 293.32 125.35 333.32 165.44 333.32 125.35 293.32"/>
+  <polygon class="cls-4" points="125.35 338.32 225.35 338.32 207.19 373.32 125.35 373.32 125.35 338.32"/>
+  <polygon class="cls-3" points="119.85 338.82 4.88 338.82 25.77 373.82 119.85 373.82 119.85 338.82"/>
+</svg>
