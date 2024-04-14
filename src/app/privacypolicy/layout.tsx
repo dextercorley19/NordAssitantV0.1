@@ -1,4 +1,4 @@
-import GlobalNavBar from "../landingpage/globalnavbar";
+import GlobalNavBar from "../ui/globalnavbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

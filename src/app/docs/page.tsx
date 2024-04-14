@@ -1,10 +1,10 @@
-import Doc from "@/components/Doc";
+import Doc from "@/app/ui/dashboard/datacenter/notes/Doc";
 import prisma from "@/lib/db/prisma";
 import { auth } from "@clerk/nextjs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nord Assistant - Docs",
+  title: "Nord Assistant - DataCenter",
 };
 
 export default async function DocsPage() {

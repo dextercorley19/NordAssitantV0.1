@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../assets/logo.svg";
-import topo from "../assets/topographic.svg";
+import logo from "../../assets/logo.svg";
+import topo from "../../assets/topographic.svg";
 
 export function Hero() {
   return (

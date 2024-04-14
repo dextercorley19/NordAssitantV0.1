@@ -7,7 +7,7 @@ import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import AddDocDialog from "@/components/AddEditDocDialog";
+import AddDocDialog from "@/app/ui/dashboard/datacenter/notes/AddEditDocDialog";
 import ThemeToggleButton from "@/components/ThemeToggleButton";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";

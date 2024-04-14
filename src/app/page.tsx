@@ -1,10 +1,10 @@
-import GlobalNavBar from "./landingpage/globalnavbar";
-import { Descriptions } from "./landingpage/descriptions";
-import { AccordionComponent } from "./landingpage/accordion";
-import Footer from "./landingpage/footer";
-import { Pricing } from "./landingpage/pricing";
-import { Testimonials } from "./landingpage/testimonials";
-import { Hero } from "./landingpage/hero";
+import GlobalNavBar from "./ui/globalnavbar";
+import { Descriptions } from "./ui/landingpage/descriptions";
+import { AccordionComponent } from "./ui/landingpage/accordion";
+import Footer from "./ui/footer";
+import { Pricing } from "./ui/landingpage/pricing";
+import { Testimonials } from "./ui/landingpage/testimonials";
+import { Hero } from "./ui/landingpage/hero";
 import Head from "next/head";
 
 export default function Home() {

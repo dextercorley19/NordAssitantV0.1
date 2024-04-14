@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "../../../../../components/ui/card";
 import { useState } from "react";
 import AddEditDocDialog from "./AddEditDocDialog";
 

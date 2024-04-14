@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import helm from "../assets/helm.jpeg";
-import mechanic from "../assets/mechanic.jpeg";
-import inventory from "../assets/inventory_pic.jpeg";
-import cruising from "../assets/cruising.jpeg";
+import helm from "../../assets/helm.jpeg";
+import mechanic from "../../assets/mechanic.jpeg";
+import inventory from "../../assets/inventory_pic.jpeg";
+import cruising from "../../assets/cruising.jpeg";
 
 export function Descriptions() {
   return (
