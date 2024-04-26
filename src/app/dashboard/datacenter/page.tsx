@@ -13,6 +13,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import UploadNote from "@/app/ui/dashboard/datacenter/tabs";
+import { Form, FormField } from "@/components/ui/form";
 
 export default async function DataCenter() {
   const { userId } = auth();
@@ -22,7 +23,7 @@ export default async function DataCenter() {
 
   return (
     <div>
-      <Breadcrumb className="pb-14 mt-4">
+      <Breadcrumb className="mt-4 pb-14">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -49,13 +50,13 @@ export default async function DataCenter() {
               <Doc doc={doc} key={doc.id} />
             ))}
             {allDocs.length == 0 && (
-              <div >
-                {"You don't have any notes yet."}
-              </div>
+              <div>{"You don't have any notes yet."}</div>
             )}
           </div>{" "}
         </TabsContent>
-        <TabsContent value="Documents">Upload your documents here.</TabsContent>
+        <TabsContent value="Documents">
+          <div>Upload your documents here.</div>
+        </TabsContent>
       </Tabs>
     </div>
   );

@@ -1,10 +1,8 @@
 "use client";
 
 import AddEditDocDialog from "@/app/ui/dashboard/datacenter/notes/AddEditDocDialog";
-import Doc from "@/app/ui/dashboard/datacenter/notes/Doc";
 import { Button } from "@/components/ui/button";
-import prisma from "@/lib/db/prisma";
-import { auth } from "@clerk/nextjs";
+
 import { Plus } from "lucide-react";
 import { useState } from "react";
 
