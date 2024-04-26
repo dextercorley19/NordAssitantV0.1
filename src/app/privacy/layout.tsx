@@ -1,10 +1,12 @@
 import GlobalNavBar from "../ui/globalnavbar";
+import "../ui/globals.css";
+
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <GlobalNavBar />
-      <main className="m-auto max-w-7xl p-4">{children}</main>
+      <main>{children}</main>
     </>
   );
 }

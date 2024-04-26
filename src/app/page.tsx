@@ -27,7 +27,7 @@ export default function Home() {
         <Hero />
         <Descriptions />
         {/* <Testimonials /> */}
-        <Pricing />
+        {/* <Pricing /> */}
         <AccordionComponent />
         <Footer />
       </main>

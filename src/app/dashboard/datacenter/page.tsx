@@ -1,7 +1,6 @@
 import Doc from "@/app/ui/dashboard/datacenter/notes/Doc";
 import prisma from "@/lib/db/prisma";
 import { auth } from "@clerk/nextjs";
-import { Metadata } from "next";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,13 +11,10 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+
 import UploadNote from "@/app/ui/dashboard/datacenter/tabs";
 
 export default async function DataCenter() {
-  //   const [showAddEditDocDialog, setShowAddEditDocDialog] = useState(false);
   const { userId } = auth();
   if (!userId) throw Error("userId undefined");
 
@@ -26,7 +22,7 @@ export default async function DataCenter() {
 
   return (
     <div>
-      <Breadcrumb className="pb-14">
+      <Breadcrumb className="pb-14 mt-4">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -53,8 +49,8 @@ export default async function DataCenter() {
               <Doc doc={doc} key={doc.id} />
             ))}
             {allDocs.length == 0 && (
-              <div className="col-span-full text-center">
-                {"You don't have any documents yet."}
+              <div >
+                {"You don't have any notes yet."}
               </div>
             )}
           </div>{" "}

@@ -16,7 +16,7 @@ export default function UploadNote() {
 
   return (
     <div>
-      <Button onClick={() => setShowAddEditDocDialog(true)}>
+      <Button variant="ghost" className="mt-2 border" onClick={() => setShowAddEditDocDialog(true)}>
         <Plus size={20} className="mr-2" />
         Add Note
       </Button>

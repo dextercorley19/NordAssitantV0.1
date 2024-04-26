@@ -12,6 +12,7 @@ import Image from "next/image";
 import logo from "../../../assets/logo.svg";
 import {
   Book,
+  Bot,
   LifeBuoy,
   Package,
   Settings2,
@@ -91,6 +92,11 @@ export default function DashboardNav() {
               href: "/dashboard/settings",
               icon: <Settings2 className="size-5" />,
               label: "Settings",
+            },
+            {
+              href: "/dashboard/chat",
+              icon: <Bot className="size-5" />,
+              label: "Chat",
             },
           ].map((item, index) => (
             <Tooltip key={index}>

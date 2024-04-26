@@ -65,16 +65,16 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-base font-medium leading-normal text-black">
-                Privacy
+                <Link href="/privacy">Privacy</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="/privacypolicy">Privacy Policy</Link>
+                <Link href="/privacy/privacypolicy">Privacy Policy</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="/">Terms of Serice</Link>
+                <Link href="/privacy/tos">Terms of Serice</Link>
               </div>
               <div className="font-regular text-sm leading-normal text-zinc-700">
-                <Link href="/">Cookie Policy</Link>
+                <Link href="/privacy/cookiepolicy">Cookie Policy</Link>
               </div>
             </div>
           </div>
