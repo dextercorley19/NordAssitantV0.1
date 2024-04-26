@@ -21,7 +21,7 @@ export default function CookiePolicy() {
             computer, to improve your experience. This page describes what
             information they gather, how we use it and why we sometimes need to
             store these cookies. We will also share how you can prevent these
-            cookies from being stored however this may downgrade or 'break'
+            cookies from being stored however this may downgrade or &apos;break&apos;
             certain elements of the sites functionality.
           </p>
           <p className="mb-2 font-semibold">How We Use Cookies</p>
@@ -83,8 +83,8 @@ export default function CookiePolicy() {
           <p className="mb-2 font-semibold">More Information</p>
           <p className="mb-4">
             Hopefully that has clarified things for you and as was previously
-            mentioned if there is something that you aren't sure whether you
-            need or not it's usually safer to leave cookies enabled in case it
+            mentioned if there is something that you aren&apos;t sure whether you
+            need or not it&apos;s usually safer to leave cookies enabled in case it
             does interact with one of the features you use on our site.
           </p>
           <p className="mb-4">

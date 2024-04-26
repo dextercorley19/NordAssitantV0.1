@@ -25,7 +25,7 @@ export default function TermsAndConditions() {
 
           <p className="mb-4">
             Permission is granted to temporarily download one copy of the
-            materials on NordAssistant's Website for personal, non-commercial
+            materials on NordAssistant&apos;s Website for personal, non-commercial
             transitory viewing only. This is the grant of a license, not a
             transfer of title, and under this license you may not:
           </p>
@@ -38,14 +38,14 @@ export default function TermsAndConditions() {
             </li>
             <li>
               attempt to reverse engineer any software contained on
-              NordAssistant's Website;
+              NordAssistant&apos;s Website;
             </li>
             <li>
               remove any copyright or other proprietary notations from the
               materials; or
             </li>
             <li>
-              transferring the materials to another person or "mirror" the
+              transferring the materials to another person or &ldquo;mirror&rdquo; the
               materials on any other server.
             </li>
           </ul>
@@ -68,7 +68,7 @@ export default function TermsAndConditions() {
           <h2 className="mb-2 text-xl font-semibold">3. Disclaimer</h2>
 
           <p className="mb-4">
-            All the materials on NordAssistant's Website are provided "as is".
+            All the materials on NordAssistant&apos;s Website are provided &ldquo;as is&rdquo;.
             NordAssistant makes no warranties, may it be expressed or implied,
             therefore negates all other warranties. Furthermore, NordAssistant
             does not make any representations concerning the accuracy or
@@ -81,7 +81,7 @@ export default function TermsAndConditions() {
           <p className="mb-4">
             NordAssistant or its suppliers will not be hold accountable for any
             damages that will arise with the use or inability to use the
-            materials on NordAssistant's Website, even if NordAssistant or an
+            materials on NordAssistant&apos;s Website, even if NordAssistant or an
             authorize representative of this Website has been notified, orally
             or written, of the possibility of such damage. Some jurisdiction
             does not allow limitations on implied warranties or limitations of
@@ -94,7 +94,7 @@ export default function TermsAndConditions() {
           </h2>
 
           <p className="mb-4">
-            The materials appearing on NordAssistant's Website may include
+            The materials appearing on NordAssistant&apos;s Website may include
             technical, typographical, or photographic errors. NordAssistant will
             not promise that any of the materials in this Website are accurate,
             complete, or current. NordAssistant may change the materials
@@ -109,7 +109,7 @@ export default function TermsAndConditions() {
             Website and is not responsible for the contents of any such linked
             site. The presence of any link does not imply endorsement by
             NordAssistant of the site. The use of any linked website is at the
-            user's own risk.
+            user&apos;s own risk.
           </p>
 
           <h2 className="mb-2 text-xl font-semibold">
@@ -130,7 +130,7 @@ export default function TermsAndConditions() {
           <h2 className="mb-2 text-xl font-semibold">9. Governing Law</h2>
 
           <p className="mb-4">
-            Any claim related to NordAssistant's Website shall be governed by
+            Any claim related to NordAssistant&apos;s Website shall be governed by
             the laws of af without regards to its conflict of law provisions.
           </p>
         </div>
