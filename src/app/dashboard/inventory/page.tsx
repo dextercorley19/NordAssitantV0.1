@@ -25,6 +25,9 @@ export default function Inventory() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+      <div>
+        Inventory coming soon
+      </div>
     </>
   );
 }
