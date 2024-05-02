@@ -36,10 +36,10 @@ export function Hero() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               {/* Ensure Button and Link components are correctly imported or defined */}
               <Button asChild>
-                <Link href="/docs">Get Started</Link>
+                <Link href="/dashboard">Get Started</Link>
               </Button>
               <Link
-                href="#"
+                href="/about/mission"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Learn more <span aria-hidden="true">→</span>

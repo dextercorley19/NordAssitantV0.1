@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Footer from "../ui/footer";
-import blog from "../assets/blog/blog.jpg";
-import blog2 from "../assets/blog/blog-1.jpg";
-import blog3 from "../assets/blog/blog-2.jpg";
-import blog4 from "../assets/blog/blog-3.jpg";
+import Footer from "../../ui/footer";
+import blog from "../../assets/blog/blog.jpg";
+import blog2 from "../../assets/blog/blog-1.jpg";
+import blog3 from "../../assets/blog/blog-2.jpg";
+import blog4 from "../../assets/blog/blog-3.jpg";
 import Link from "next/link";
 
 export default function Blog() {

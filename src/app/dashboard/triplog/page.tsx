@@ -25,6 +25,7 @@ export default function TripLog() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+      Coming soon
     </>
   );
 }

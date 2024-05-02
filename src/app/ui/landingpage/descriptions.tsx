@@ -28,7 +28,7 @@ export function Descriptions() {
             your vessel. Adding more information is as easy as uploading a file.
           </div>
           <Button>
-            <Link href="/">
+            <Link href="/about/mission">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -44,7 +44,7 @@ export function Descriptions() {
             and schedules. Add your mechanic to have everything in one place.
           </div>
           <Button>
-            <Link href="/">
+            <Link href="/about/mission">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -78,7 +78,7 @@ export function Descriptions() {
             of all your parts and supplies.
           </div>
           <Button>
-            <Link href="/">
+            <Link href="/about/mission">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>
@@ -94,7 +94,7 @@ export function Descriptions() {
             adventures.
           </div>
           <Button>
-            <Link href="/">
+            <Link href="/about/mission">
               Learn more <span aria-hidden="true">→</span>
             </Link>
           </Button>

@@ -1,3 +1,4 @@
+import Footer from "../ui/footer";
 import GlobalNavBar from "../ui/globalnavbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -5,6 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <GlobalNavBar />
       <main className="m-auto max-w-7xl p-4">{children}</main>
+      <Footer />
     </>
   );
 }

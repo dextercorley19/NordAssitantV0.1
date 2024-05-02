@@ -48,7 +48,7 @@ export default function DashboardNav() {
                   <Button
                     variant="outline"
                     size="icon"
-                    aria-label="Home"
+                    aria-label="Dashboard"
                     className={getButtonClassName("/dashboard")}
                     onClick={() => handleSetActiveLink("/dashboard")}
                   >
@@ -57,7 +57,7 @@ export default function DashboardNav() {
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right" sideOffset={5}>
-                Home
+                Dashboard
               </TooltipContent>
             </Tooltip>
           </div>
@@ -93,11 +93,11 @@ export default function DashboardNav() {
               icon: <Settings2 className="size-5" />,
               label: "Settings",
             },
-            {
-              href: "/dashboard/chat",
-              icon: <Bot className="size-5" />,
-              label: "Chat",
-            },
+            // {
+            //   href: "/dashboard/chat",
+            //   icon: <Bot className="size-5" />,
+            //   label: "Chat",
+            // },
           ].map((item, index) => (
             <Tooltip key={index}>
               <TooltipTrigger asChild>
@@ -122,7 +122,7 @@ export default function DashboardNav() {
         <nav className="mb-4 mt-auto grid gap-1 p-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href="/dashboard">
+              <Link href="/help">
                 <Button
                   variant="ghost"
                   size="icon"

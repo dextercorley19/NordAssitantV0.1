@@ -21,12 +21,12 @@ export default function Inventory() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Inventory</BreadcrumbPage>
+            <BreadcrumbPage>Checklists</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
       <div>
-        Inventory coming soon
+        Coming soon
       </div>
     </>
   );

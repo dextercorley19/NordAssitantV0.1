@@ -96,7 +96,7 @@ export default function GlobalNavBar() {
                       <NavigationMenuLink asChild>
                         <a
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-white to-purple-200 p-6 no-underline shadow outline-none focus:shadow-md "
-                          href="/blog"
+                          href="../about/blog"
                         >
                           <PencilLine className="h-6 w-6" />
                           <div className="mb-2 mt-4 text-lg font-medium">
@@ -112,7 +112,7 @@ export default function GlobalNavBar() {
                     <ListItem href="/docs" title="Founding Team">
                       Meet the founding team behind Nord Assistant.
                     </ListItem>
-                    <ListItem href="/docs/installation" title="Mission">
+                    <ListItem href="../about/mission" title="Mission">
                       What we hope to accomplish.
                     </ListItem>
                     <ListItem

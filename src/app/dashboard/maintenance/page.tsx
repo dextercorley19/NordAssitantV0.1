@@ -25,6 +25,7 @@ import {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
+        Coming soon
       </>
     );
   }

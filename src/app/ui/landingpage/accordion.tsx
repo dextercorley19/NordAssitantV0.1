@@ -14,7 +14,7 @@ export function AccordionComponent() {
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>How do I set up?</AccordionTrigger>
-          <AccordionContent>Answer goes here.</AccordionContent>
+          <AccordionContent>First create an account with us and navigate to the dashboard. On the side nav bar, navigate to Data Center and start adding in text you would like Nord to reference. Talk with nord in the main dashboard. Other features coming soon.</AccordionContent>
         </AccordionItem>
       </Accordion>
       <Accordion type="single" collapsible>

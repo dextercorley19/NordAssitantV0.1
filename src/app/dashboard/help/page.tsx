@@ -7,10 +7,10 @@ import {
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb";
   
-  export default function Settings() {
+  export default function Help() {
     return (
       <>
-        <Breadcrumb className="mt-4 pb-14">
+        <Breadcrumb className="pb-14 mt-4">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -21,11 +21,13 @@ import {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Settings</BreadcrumbPage>
+              <BreadcrumbPage>Help</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        Coming soon
+        <div>
+          Coming soon
+        </div>
       </>
     );
   }
