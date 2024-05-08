@@ -1,18 +1,15 @@
+import { Button } from "@/components/ui/button";
+
 export default function Mission() {
   return (
-    <div className="mx-auto mt-28 mb-12 max-w-4xl">
-        <div className="mb-12 w-96 text-4xl font-bold text-black">
-          Mission
-        </div>
-
-      <blockquote className="mb-12 text-xl italic">
-        <p className="mb-2">
-          “Ships are the nearest things to dreams that hands have ever made,
+    <div className="mx-auto mb-12 mt-28 max-w-4xl">
+      <div className="mb-12 text-4xl font-bold text-black">Mission</div>
+      <blockquote className="mb-8 text-lg italic">
+        <p className="mb-1">
+          “Ships are the nearest things to dreams that hands have ever made, for
+          somewhere deep in their oaken hearts the soul of a song is laid.”
+          - Robert Rose
         </p>
-        <p>
-          for somewhere deep in their oaken hearts the soul of a song is laid.”
-        </p>
-        <p>- Robert Rose</p>
       </blockquote>
 
       <p className="mb-4">
@@ -40,17 +37,18 @@ export default function Mission() {
       </p>
 
       <p className="mb-4">
-        A typical captain&apos;s helm station usually holds a library of documents
-        sourcing everything described above. Our goal with Nord is not to get
-        rid of these but offer a service that helps you integrate and source
-        through them quickly and in one place.
+        A typical captain&apos;s helm station usually holds a library of
+        documents sourcing everything described above. Our goal with Nord is not
+        to get rid of these but offer a service that helps you integrate and
+        source through them quickly and in one place.
       </p>
 
-      <p className="mb-4">
+      <p className="mb-12">
         Our platform is useful for anyone including learning boaters, proficient
         captains, and charter owners. Book a demo and see how Nord can add to
         your adventure.
       </p>
+      <Button>Early access form</Button>
     </div>
   );
 }

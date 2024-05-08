@@ -8,7 +8,7 @@ export default function StickyFooter() {
       <div className="flex items-start justify-between p-4">
         <div className="flex flex-col space-y-4">
           <div className="text-2xl font-medium text-black">Nord Assistant</div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <div className="rounded-full p-2">
               <Instagram color="#606060" />
             </div>
@@ -21,7 +21,7 @@ export default function StickyFooter() {
             <div className="rounded-full p-2">
               <Youtube color="#606060" />
             </div>
-          </div>
+          </div> */}
           <div className="text-sm text-zinc-700">
             Copyright © 2024 Nord Assistant All Rights Reserved
           </div>
@@ -30,9 +30,9 @@ export default function StickyFooter() {
           <div className="space-y-3">
             <div className="text-base font-medium text-black">About</div>
             <div className="flex flex-col gap-3">
-              <Link href="/" className="text-sm text-zinc-700">
+              {/* <Link href="/" className="text-sm text-zinc-700">
                 Founding Team
-              </Link>
+              </Link> */}
               <Link href="/" className="text-sm text-zinc-700">
                 Mission
               </Link>
@@ -41,20 +41,20 @@ export default function StickyFooter() {
               </Link>
             </div>
           </div>
-          <div className="space-y-3">
+          {/* <div className="space-y-3">
             <div className="text-base font-medium text-black">Docs</div>
             <div className="flex flex-col gap-3">
               <Link href="/" className="text-sm text-zinc-700">
                 Setup
               </Link>
               <Link href="/" className="text-sm text-zinc-700">
-                Invenhrefry
+                Inventory
               </Link>
               <Link href="/" className="text-sm text-zinc-700">
                 Maintenance
               </Link>
             </div>
-          </div>
+          </div> */}
           <div className="space-y-3">
             <div className="text-base font-medium leading-normal text-black">
               <Link href="/privacy">Privacy</Link>

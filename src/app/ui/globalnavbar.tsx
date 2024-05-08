@@ -109,14 +109,14 @@ export default function GlobalNavBar() {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/docs" title="Founding Team">
+                    {/* <ListItem href="/" title="Founding Team">
                       Meet the founding team behind Nord Assistant.
-                    </ListItem>
+                    </ListItem> */}
                     <ListItem href="../about/mission" title="Mission">
                       What we hope to accomplish.
                     </ListItem>
                     <ListItem
-                      href="/docs/primitives/typography"
+                      href="/about/contact"
                       title="Contact Us"
                     >
                       Reach out to our team to schedule a demo or ask a
@@ -125,7 +125,7 @@ export default function GlobalNavBar() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
                   Docs
                 </NavigationMenuTrigger>
@@ -142,7 +142,7 @@ export default function GlobalNavBar() {
                     ))}
                   </ul>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
               <NavigationMenuItem>
                 <Link href="/dashboard" legacyBehavior passHref>
                   <NavigationMenuLink

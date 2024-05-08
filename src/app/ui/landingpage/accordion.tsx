@@ -20,13 +20,13 @@ export function AccordionComponent() {
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Can I add multiple boats?</AccordionTrigger>
-          <AccordionContent>Answer goes here.</AccordionContent>
+          <AccordionContent>Feature coming soon.</AccordionContent>
         </AccordionItem>
       </Accordion>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Can my mechanic access Nord?</AccordionTrigger>
-          <AccordionContent>Answer goes here.</AccordionContent>
+          <AccordionContent>Feature coming soon.</AccordionContent>
         </AccordionItem>
       </Accordion>
       <Accordion type="single" collapsible>
@@ -34,7 +34,7 @@ export function AccordionComponent() {
           <AccordionTrigger>
             What are some things Nord could help me with?
           </AccordionTrigger>
-          <AccordionContent>Answer goes here.</AccordionContent>
+          <AccordionContent>Feature coming soon.</AccordionContent>
         </AccordionItem>
       </Accordion>
       <Accordion type="single" collapsible>
@@ -42,7 +42,7 @@ export function AccordionComponent() {
           <AccordionTrigger>
             What are the features planned for Nord?
           </AccordionTrigger>
-          <AccordionContent>Answer goes here.</AccordionContent>
+          <AccordionContent>Feature coming soon.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
