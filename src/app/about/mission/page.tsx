@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Mission() {
   return (
@@ -7,8 +8,8 @@ export default function Mission() {
       <blockquote className="mb-8 text-lg italic">
         <p className="mb-1">
           “Ships are the nearest things to dreams that hands have ever made, for
-          somewhere deep in their oaken hearts the soul of a song is laid.”
-          - Robert Rose
+          somewhere deep in their oaken hearts the soul of a song is laid.” -
+          Robert Rose
         </p>
       </blockquote>
 
@@ -48,7 +49,9 @@ export default function Mission() {
         captains, and charter owners. Book a demo and see how Nord can add to
         your adventure.
       </p>
-      <Button>Early access form</Button>
+      <Link href="https://forms.gle/qw5Wdkd1gqjfTFZF8">
+        <Button>Early access form</Button>
+      </Link>
     </div>
   );
 }
