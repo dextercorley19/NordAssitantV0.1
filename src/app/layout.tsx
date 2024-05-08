@@ -24,9 +24,11 @@ export default function RootLayout({
         <body className={inter.className}>
           <Analytics />
           <SpeedInsights />
-          {/* <ThemeProvider attribute="class">{children}</ThemeProvider> */}
+          {children}
         </body>
       </ClerkProvider>
     </html>
   );
 }
+
+          {/* <ThemeProvider attribute="class">{children}</ThemeProvider> */}
