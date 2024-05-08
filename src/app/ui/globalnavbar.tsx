@@ -15,6 +15,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { PencilLine } from "lucide-react";
@@ -91,11 +92,11 @@ export default function GlobalNavBar() {
                   About
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  <ul className="grid w-[250px] gap-3 p-6">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-white to-purple-200 p-6 no-underline shadow outline-none focus:shadow-md "
+                          className="flex w-full select-none flex-col rounded-md bg-gradient-to-b from-white to-purple-200 p-6 no-underline shadow outline-none focus:shadow-md "
                           href="../about/blog"
                         >
                           <PencilLine className="h-6 w-6" />
@@ -115,10 +116,7 @@ export default function GlobalNavBar() {
                     <ListItem href="../about/mission" title="Mission">
                       What we hope to accomplish.
                     </ListItem>
-                    <ListItem
-                      href="/about/contact"
-                      title="Contact Us"
-                    >
+                    <ListItem href="/about/contact" title="Contact Us">
                       Reach out to our team to schedule a demo or ask a
                       question.
                     </ListItem>
