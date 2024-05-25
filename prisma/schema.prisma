@@ -23,3 +23,25 @@ model Docs {
 
   @@map("docs")
 }
+
+model PDF {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  fileName  String
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model PDFtext {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  userId    String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("pdftexts")
+
+}

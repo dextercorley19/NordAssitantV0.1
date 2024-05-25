@@ -9,11 +9,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import UploadNote from "@/app/ui/dashboard/datacenter/tabs";
-import { Form, FormField } from "@/components/ui/form";
+import PDFUpload from "@/app/ui/dashboard/datacenter/pdfcomponents/UploadPDF";
 
 export default async function DataCenter() {
   const { userId } = auth();
@@ -22,7 +20,7 @@ export default async function DataCenter() {
   const allDocs = await prisma.docs.findMany({ where: { userId } });
 
   return (
-    <div>
+    <div className="mx-16">
       <Breadcrumb className="mt-4 pb-14">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -51,7 +49,9 @@ export default async function DataCenter() {
           </div>{" "}
         </TabsContent>
         <TabsContent value="Documents">
-          <div>Upload your documents here.</div>
+          <div>
+            <PDFUpload />
+          </div>
         </TabsContent>
       </Tabs>
     </div>
