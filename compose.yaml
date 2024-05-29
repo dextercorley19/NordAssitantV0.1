@@ -1,0 +1,58 @@
+networks:
+  nord-assistant:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+
+services:
+  nord-app:
+    container_name: nord-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - './nord-app/src:/nord-app/src'
+      - './nord-app/public:/nord-app/public'
+    build:
+      context: ./nord-app
+      dockerfile: Dockerfile
+    networks:
+      nord-assistant:
+        ipv4_address: 172.18.0.3
+
+  db:
+    container_name: db
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    user: root
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: nord-assistant
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      nord-assistant:
+        ipv4_address: 172.18.0.2
+
+  pdf-server:
+    container_name: pdf-server
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: ./pdf-server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./pdf-server:/app
+    environment:
+      dev_mode: "True"
+    networks:
+      nord-assistant:
+        ipv4_address: 172.18.0.4
