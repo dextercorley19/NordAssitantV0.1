@@ -18,75 +18,38 @@ import {
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { PencilLine } from "lucide-react";
+import { PencilLine, Menu } from "lucide-react";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Nord Chat",
-    href: "/",
-    description:
-      "Setup Nord with every piece of written information to your vessel.",
-  },
-  {
-    title: "Maintenance Logs",
-    href: "/",
-    description:
-      "From davot crane interworkings to fuel transfers, Nord can help. Add your mechanic to always be on the same page, and never miss an oil change again.",
-  },
-  {
-    title: "Inventory Management",
-    href: "/",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  // {
-  //   title: "Scroll-area",
-  //   href: "/",
-  //   description: "Visually or semantically separates content.",
-  // },
-  // {
-  //   title: "Tabs",
-  //   href: "/",
-  //   description:
-  //     "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  // },
-  // {
-  //   title: "Tooltip",
-  //   href: "/",
-  //   description:
-  //     "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  // },
-];
+// ... (rest of the code)
 
 export default function GlobalNavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if page is scrolled more than 0 pixels
       setIsScrolled(window.scrollY > 0);
     };
 
-    // Listen for scroll events on the window
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []); // The empty array ensures this effect runs only once on mount
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div
       className={`bg-transparent p-8 ${isScrolled ? "bg-white" : ""}`}
       style={{ position: "fixed", top: 0, width: "100%", zIndex: 1000 }}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="Nord Assistant Logo" width={30} height={30} />
-          <p className="hidden px-2 text-lg font-normal sm:block">
-            Nord Assistant
-          </p>
+          <p className="px-2 text-lg font-normal">Nord Assistant</p>
         </Link>
-        <div>
+        <div className="flex items-center gap-2">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -94,7 +57,7 @@ export default function GlobalNavBar() {
                   About
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[220px] gap-3 p-6">
+                  <ul className="grid w-[250px] gap-3 p-6">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
@@ -119,7 +82,8 @@ export default function GlobalNavBar() {
                       What we hope to accomplish.
                     </ListItem>
                     <ListItem href="/about/contact" title="Contact Us">
-                      Reach out to schedule a demo.
+                      Reach out to our team to schedule a demo or ask a
+                      question.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
@@ -150,21 +114,81 @@ export default function GlobalNavBar() {
                     Dashboard
                   </NavigationMenuLink>
                 </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <UserButton
-                  afterSignOutUrl="/"
-                  appearance={{
-                    elements: {
-                      avatarBox: { width: "2.5rem", height: "2.5rem" },
-                    },
-                  }}
-                />{" "}
-              </NavigationMenuItem>
+              </NavigationMenuItem>{" "}
             </NavigationMenuList>
           </NavigationMenu>
+          <UserButton
+            afterSignOutUrl="/"
+            appearance={{
+              elements: {
+                avatarBox: { width: "2.5rem", height: "2.5rem" },
+              },
+            }}
+          />
+          <button
+            className="ml-2 rounded-md p-2 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden"
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
       </div>
+      {isMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pb-3 pt-2 sm:px-3">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="bg-transparent">
+                    About
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[250px] gap-3 p-6">
+                      <li className="row-span-3">
+                        <NavigationMenuLink asChild>
+                          <a
+                            className="flex w-full select-none flex-col rounded-md bg-gradient-to-b from-white to-purple-200 p-6 no-underline shadow outline-none focus:shadow-md "
+                            href="../about/blog"
+                          >
+                            <PencilLine className="h-6 w-6" />
+                            <div className="mb-2 mt-4 text-lg font-medium">
+                              Blog
+                            </div>
+                            <p className="text-sm leading-tight text-muted-foreground">
+                              Read about some of the best adventures our users
+                              embark on, and how they use Nord Assistant.
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                      {/* <ListItem href="/" title="Founding Team">
+                      Meet the founding team behind Nord Assistant.
+                    </ListItem> */}
+                      <ListItem href="../about/mission" title="Mission">
+                        What we hope to accomplish.
+                      </ListItem>
+                      <ListItem href="/about/contact" title="Contact Us">
+                        Reach out to our team to schedule a demo or ask a
+                        question.
+                      </ListItem>
+                    </ul>
+                  </NavigationMenuContent>{" "}
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={`${navigationMenuTriggerStyle()} bg-transparent`}
+                    >
+                      Dashboard
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
