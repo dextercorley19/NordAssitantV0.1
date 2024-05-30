@@ -6,7 +6,7 @@ export default function UploadFile() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <UploadButton
-                endpoint="imageUploader"
+                endpoint="pdfUploader"
                 onClientUploadComplete={(res: any) => {
                     // Do something with the response
                     console.log("Files: ", res);
