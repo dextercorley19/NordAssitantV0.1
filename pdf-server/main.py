@@ -1,9 +1,10 @@
 from contextlib import asynccontextmanager
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from db import test_pool, pool
 import requests
 import os
+from pdfminer.high_level import extract_text
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,24 +28,26 @@ async def test_db():
     return results
 
 
-@app.get("/files")
-async def get_files():
-    url = os.getenv("PDF_URL")
-    response = requests.get(url, stream=True)
-
+@app.post("/parse-pdf")
+async def save_pdf(request: Request):
+    body = await request.json()
+    response = requests.get(body["pdfUrl"], stream=True)
     # isolate PDF filename from URL
-    pdf_file_name = os.path.basename(url)
+    pdf_file_name = os.path.basename("test.pdf")
     if response.status_code == 200:
         # Save in current working directory
         filepath = os.path.join(os.getcwd(), pdf_file_name)
         with open(filepath, "wb") as pdf_object:
             pdf_object.write(response.content)
             print(f"{pdf_file_name} was successfully saved!")
+        text = extract_text(filepath)
+        print(text)
+        os.remove(filepath)
     else:
         print(f"Uh oh! Could not download {pdf_file_name},")
         print(f"HTTP response status code: {response.status_code}")
 
-    return {"message": "File downloaded successfully!"}
+    return {"message": "File parsed successfully!"}
 
 
 if __name__ == "__main__":

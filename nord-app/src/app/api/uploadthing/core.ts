@@ -5,6 +5,18 @@ import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
+function postPDFUrl(pdfUrl: string) {
+    const res = fetch(`http:172.18.0.4:3001/parse-pdf`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ pdfUrl }),
+    });
+
+    console.log("res", res);
+}
+
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
     // Define as many FileRoutes as you like, each with a unique routeSlug
@@ -24,7 +36,10 @@ export const ourFileRouter = {
             // This code RUNS ON YOUR SERVER after upload
             console.log("Upload complete for userId:", metadata.userId);
 
+
             console.log("file url", file.url);
+
+            postPDFUrl(file.url);
 
             // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
             return { uploadedBy: metadata.userId };
