@@ -13,6 +13,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import UploadNote from "@/app/ui/dashboard/datacenter/tabs";
+import UploadFile from "@/app/ui/dashboard/datacenter/uploader";
 import { Form, FormField } from "@/components/ui/form";
 
 export default async function DataCenter() {
@@ -51,7 +52,7 @@ export default async function DataCenter() {
           </div>{" "}
         </TabsContent>
         <TabsContent value="Documents">
-          <div>Upload your documents here.</div>
+          <UploadFile />
         </TabsContent>
       </Tabs>
     </div>

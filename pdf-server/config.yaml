@@ -1,0 +1,5 @@
+db_host: "host.docker.internal"
+db_port: 5432
+db_dbname: "nord-assistant"
+db_user: "postgres"
+db_password: "postgres"

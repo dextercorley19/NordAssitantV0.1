@@ -25,11 +25,13 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    user: root
+    user: postgres
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: nord-assistant
+    volumes:
+      - './db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready" ]
       interval: 10s
@@ -53,6 +55,9 @@ services:
       - ./pdf-server:/app
     environment:
       dev_mode: "True"
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
     networks:
       nord-assistant:
         ipv4_address: 172.18.0.4
