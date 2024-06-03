@@ -26,7 +26,7 @@ app = FastAPI(lifespan=lifespan)
 async def test_db():
     results = await test_pool()
     return results
-
+ 
 
 @app.post("/parse-pdf")
 async def save_pdf(request: Request):
