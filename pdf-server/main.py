@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI, Request
-from db import test_pool, pool
+from db import test_pool, pool, get_relevant_docs, create_doc, get_relevant_doc
 import requests
 import os
 from pdfminer.high_level import extract_text
@@ -25,6 +25,32 @@ app = FastAPI(lifespan=lifespan)
 @app.get("/")
 async def test_db():
     results = await test_pool()
+    return results
+
+
+@app.get("/documents/{id}")
+async def get_docs(id: str):
+    results = await get_relevant_docs(id)
+    return results
+
+
+@app.get("/document/{id}")
+async def get_docs(id: str):
+    res = await get_relevant_doc(id)
+    return res
+
+
+@app.post("/document/{id}")
+async def post_doc(id: str, request: Request):
+    body = await request.json()
+    results = await create_doc(id, body["text"])
+    return results
+
+
+@app.put("/document/{id}")
+async def update_doc(id: str, request: Request):
+    body = await request.json()
+    results = await create_doc(id, body["text"])
     return results
 
 

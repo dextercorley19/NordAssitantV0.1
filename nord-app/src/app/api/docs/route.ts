@@ -8,6 +8,18 @@ import {
 } from "@/lib/validation/doc";
 import { auth } from "@clerk/nextjs";
 
+async function createDoc(data: { title: string; content: string, userId: string }) {
+  const res = fetch(`http:172.18.0.4:3001/documents/${data["userId"]}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ data }),
+  });
+
+  console.log("res", res);
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();

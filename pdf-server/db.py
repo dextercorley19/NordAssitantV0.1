@@ -15,3 +15,27 @@ async def test_pool():
             await cursor.execute("SELECT * FROM test")
             results = await cursor.fetchall()
             return results
+
+
+async def get_relevant_doc(id: str):
+    async with pool.connection() as conn:
+        async with conn.cursor() as cursor:
+            await cursor.execute("SELECT * FROM docs WHERE id = %s", (id,))
+            results = await cursor.fetchone()
+            return results
+
+
+async def get_relevant_docs(id: str):
+    async with pool.connection() as conn:
+        async with conn.cursor() as cursor:
+            await cursor.execute("SELECT * FROM docs WHERE id = %s", (id,))
+            results = await cursor.fetchall()
+            return results
+
+
+async def create_doc(id: str):
+    async with pool.connection() as conn:
+        async with conn.cursor() as cursor:
+            await cursor.execute("INSERT INTO docs (id) VALUES (%s)", (id,))
+            results = await cursor.fetchall()
+            return results
