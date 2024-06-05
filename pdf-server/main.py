@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 from io import StringIO
 from openai import OpenAI
 
+from pinecone import Pinecone
+
 load_dotenv()
 
 
@@ -33,9 +35,15 @@ async def test_db():
     return results
 
 
-@app.get("/chunk")
-async def test_chunk():
-    chunker = Chunker()
+@app.post("/chunk")
+async def test_chunk(request: Request):
+    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+    index = pc.Index("pdf-server")
+
+    body = await request.json()
+    user_id = body["userId"]
+
+    chunker = Chunker("PenaltyBoxIII-OperatingManual.pdf")
     output_string = StringIO()
     with open("./PenaltyBoxIII-OperatingManual.pdf", "rb") as fin:
         extract_text_to_fp(
@@ -55,17 +63,28 @@ async def test_chunk():
     api_key = os.getenv("OPENAI_API_KEY")
 
     client = OpenAI()
-
+    vectors = []
     for key, value in cleaned_dict.items():
         chunk_embeddings = client.embeddings.create(
             model="text-embedding-ada-002",
             input=value,
             encoding_format="float",
         )
-        # TODO: save group_num to db individually
-        # create postgres db connection
-        # Store the embeddings in the database, uniquely identified by the user_id, file_name, and embedding_key (value from cleaned_dict)
-        # TODO: create embeddigns table in db
+        vector_obj = {
+            "id": user_id,
+            "values": chunk_embeddings,
+            "metadata": {"key": key},
+        }
+        vectors.append(vector_obj)
+
+    index.upsert(
+        vectors,
+        namespace=chunker.filename,
+    )
+    # TODO: save group_num to db individually
+    # create postgres db connection
+    # Store the embeddings in the database, uniquely identified by the user_id, file_name, and embedding_key (value from cleaned_dict)
+    # TODO: create embeddigns table in db
 
 
 @app.post("/parse-pdf")

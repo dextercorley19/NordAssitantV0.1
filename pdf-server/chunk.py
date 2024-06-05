@@ -1,16 +1,10 @@
-from io import StringIO
-from pdfminer.high_level import extract_text_to_fp
-from pdfminer.layout import LAParams
-import nltk
 import re
-from openai import OpenAI
-import os
 
 
 class Chunker:
     def __init__(self):
         # Get the API key from the environment
-        pass
+        self.filename = "PenaltyBoxIII-OperatingManual.pdf"
 
     def group_words(self, words, group_size=100):
         grouped_words = {}

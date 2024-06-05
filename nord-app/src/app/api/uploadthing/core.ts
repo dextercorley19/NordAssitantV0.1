@@ -1,20 +1,28 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser, useUser } from "@clerk/nextjs";
 
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
+interface UseUserT {
+    isLoaded: boolean;
+    isSignedIn: boolean;
+    user: { id: string };
+}
+
 const f = createUploadthing();
 
 function postPDFUrl(pdfUrl: string) {
-    const res = fetch(`http:172.18.0.4:3001/parse-pdf`, {
+    const { isLoaded, isSignedIn, user } = useUser() as UseUserT;
+    const userId = user.id as string;
+
+    console.log("userId", userId);
+    const res = fetch(`http:172.18.0.4:3001/chunk`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ pdfUrl }),
+        body: JSON.stringify({ userId: userId }),
     });
-
-    console.log("res", res);
 }
 
 // FileRouter for your app, can contain multiple FileRoutes
