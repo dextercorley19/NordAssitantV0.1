@@ -18,7 +18,6 @@ export default authMiddleware({
     "/privacy/privacypolicy",
     "/privacy/tos",
     "/privacy/cookiepolicy",
-    "/api/uploadthing"
   ],
 });
 

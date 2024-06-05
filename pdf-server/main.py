@@ -4,7 +4,7 @@ import requests
 import nltk
 import uuid
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, File, UploadFile
 from db import test_pool, pool
 from chunk import Chunker
 from pdfminer.high_level import extract_text, extract_text_to_fp
@@ -34,6 +34,11 @@ app = FastAPI(lifespan=lifespan)
 async def test_db():
     results = await test_pool()
     return results
+
+
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile):
+    return {"filename": file.filename, "content_type": file.content_type}
 
 
 @app.post("/chunk")
