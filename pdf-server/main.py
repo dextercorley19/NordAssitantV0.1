@@ -2,6 +2,7 @@ import os
 import uvicorn
 import requests
 import nltk
+import uuid
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from db import test_pool, pool
@@ -43,7 +44,7 @@ async def test_chunk(request: Request):
     body = await request.json()
     user_id = body["userId"]
 
-    chunker = Chunker("PenaltyBoxIII-OperatingManual.pdf")
+    chunker = Chunker()
     output_string = StringIO()
     with open("./PenaltyBoxIII-OperatingManual.pdf", "rb") as fin:
         extract_text_to_fp(
@@ -65,15 +66,19 @@ async def test_chunk(request: Request):
     client = OpenAI()
     vectors = []
     for key, value in cleaned_dict.items():
-        chunk_embeddings = client.embeddings.create(
-            model="text-embedding-ada-002",
-            input=value,
-            encoding_format="float",
+        chunk_embeddings = (
+            client.embeddings.create(
+                model="text-embedding-ada-002",
+                input=value,
+                encoding_format="float",
+            )
+            .data[0]
+            .embedding
         )
         vector_obj = {
-            "id": user_id,
+            "id": str(uuid.uuid4()),
             "values": chunk_embeddings,
-            "metadata": {"key": key},
+            "metadata": {"key": key, "user_id": user_id},
         }
         vectors.append(vector_obj)
 

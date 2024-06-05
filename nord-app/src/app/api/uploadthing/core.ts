@@ -11,17 +11,14 @@ interface UseUserT {
 
 const f = createUploadthing();
 
-function postPDFUrl(pdfUrl: string) {
-    const { isLoaded, isSignedIn, user } = useUser() as UseUserT;
-    const userId = user.id as string;
-
+async function postPDFUrl(userId: string) {
     console.log("userId", userId);
     const res = fetch(`http:172.18.0.4:3001/chunk`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: userId }),
+        body: JSON.stringify({ "userId": userId }),
     });
 }
 
@@ -47,7 +44,7 @@ export const ourFileRouter = {
 
             console.log("file url", file.url);
 
-            postPDFUrl(file.url);
+            await postPDFUrl(metadata.userId);
 
             // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
             return { uploadedBy: metadata.userId };
