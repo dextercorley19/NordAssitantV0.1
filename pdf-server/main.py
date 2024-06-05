@@ -1,11 +1,16 @@
-from contextlib import asynccontextmanager
+import os
 import uvicorn
+import requests
+import nltk
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from db import test_pool, pool
-import requests
-import os
-from pdfminer.high_level import extract_text
+from chunk import Chunker
+from pdfminer.high_level import extract_text, extract_text_to_fp
+from pdfminer.layout import LAParams
 from dotenv import load_dotenv
+from io import StringIO
+from openai import OpenAI
 
 load_dotenv()
 
@@ -28,6 +33,41 @@ async def test_db():
     return results
 
 
+@app.get("/chunk")
+async def test_chunk():
+    chunker = Chunker()
+    output_string = StringIO()
+    with open("./PenaltyBoxIII-OperatingManual.pdf", "rb") as fin:
+        extract_text_to_fp(
+            fin, output_string, laparams=LAParams(), output_type="text", codec=None
+        )  # can be 'html', 'xml', 'text', 'tag'
+
+    # Get the extracted text
+    extracted_text = output_string.getvalue()
+
+    # tokenize the text
+    tokens = nltk.word_tokenize(extracted_text)
+
+    grouped_dict = chunker.group_words(tokens)
+
+    cleaned_dict = chunker.clean_groups(grouped_dict)
+
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    client = OpenAI()
+
+    for key, value in cleaned_dict.items():
+        chunk_embeddings = client.embeddings.create(
+            model="text-embedding-ada-002",
+            input=value,
+            encoding_format="float",
+        )
+        # TODO: save group_num to db individually
+        # create postgres db connection
+        # Store the embeddings in the database, uniquely identified by the user_id, file_name, and embedding_key (value from cleaned_dict)
+        # TODO: create embeddigns table in db
+
+
 @app.post("/parse-pdf")
 async def save_pdf(request: Request):
     body = await request.json()
@@ -41,7 +81,7 @@ async def save_pdf(request: Request):
             pdf_object.write(response.content)
             print(f"{pdf_file_name} was successfully saved!")
         text = extract_text(filepath)
-        print(text)
+
         os.remove(filepath)
     else:
         print(f"Uh oh! Could not download {pdf_file_name},")

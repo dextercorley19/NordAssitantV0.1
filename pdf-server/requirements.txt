@@ -4,3 +4,11 @@ psycopg[binary,pool]==3.1.19
 requests==2.32.3
 python-dotenv==1.0.1
 pdfminer.six[image]
+nltk
+openai
+annotated-types==0.7.0
+anyio==4.4.0
+appnope==0.1.4
+asttokens==2.4.1
+certifi==2024.2.2
+cffi==1.16.0
